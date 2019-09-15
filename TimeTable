@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next; 
+}*start=NULL,*temp,*newnode;
+void push(int a);
+void pop();
+int a;
+
+void main()
+{
+    
+    int ch;
+    temp=start;
+    while(1)
+    {
+    printf("1.push 2.pop");
+    printf("enter your choice");
+    scanf("%d",&ch);
+    
+    switch(ch)
+    {
+        case 1:printf("enter te data");
+               scanf("%d",&a);
+               push(a);
+               break;
+        case 2:pop();      
+               break;
+    }
+}
+}
+void push(int da)
+{
+    a=da;
+    if(start==NULL)
+    {
+        
+         start=(struct node*)malloc(sizeof(struct node));
+         start->data=a;
+         start->next=NULL;
+     }
+     else 
+     {       newnode=(struct node*)malloc(sizeof(struct node));
+
+          newnode->data=a;
+          newnode->next=start;
+          start=newnode;
+         
+     }
+}
+void pop()
+{
+    temp=start;
+    if(temp==NULL)
+    {
+        printf("underflow");
+    }
+    else
+    {
+       int k= start->data;
+        temp=temp->next;
+        printf("\n%d node deleted",k);
+        free(start);
+        start=temp;
+    }
+}
